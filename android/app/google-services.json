@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "596207241093",
+    "firebase_url": "https://haunted-hallows.firebaseio.com",
+    "project_id": "haunted-hallows",
+    "storage_bucket": "haunted-hallows.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:596207241093:android:a9f1e4e2addaf4e7cd66ec",
+        "android_client_info": {
+          "package_name": "com.example.HauntedHallows"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "596207241093-d3dlk3c3710i2dos1sg4eppcq38adovo.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBXWMxGvpZPulW3AArEPXwtQCyA54ttY04"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "596207241093-d3dlk3c3710i2dos1sg4eppcq38adovo.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
