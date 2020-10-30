@@ -1,5 +1,6 @@
 import 'dart:ui';
 import 'package:HauntedHallows/scanObject.dart';
+import 'package:HauntedHallows/screens/profileview.dart';
 import 'package:HauntedHallows/screens/spellslist.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
@@ -41,7 +42,7 @@ class _HomeViewState extends State<HomeView> {
               .snapshots(),
           builder: (context, snapshot) {
             if (!snapshot.hasData) {
-              return Container(height: 80,width: 80,child: Text("Loading"));
+              return Container(height: 80, width: 80, child: Text("Loading"));
             }
             var userDocument = snapshot.data;
             if (userDocument["Character"] == "None") {
@@ -382,14 +383,15 @@ class _HomeViewState extends State<HomeView> {
                     Expanded(
                       child: GridView.count(
                         primary: false,
-                        padding: const EdgeInsets.only(left: 20,right: 20),
+                        padding: const EdgeInsets.only(left: 20, right: 20),
                         crossAxisSpacing: 20,
                         mainAxisSpacing: 20,
                         crossAxisCount: 2,
                         children: <Widget>[
                           GestureDetector(
                             onTap: () {
-                              print('Pass');},
+                              print('Pass');
+                            },
                             child: Stack(
                               children: [
                                 Padding(
@@ -434,7 +436,6 @@ class _HomeViewState extends State<HomeView> {
                                             BorderRadius.circular(20)),
                                   ),
                                 ),
-                              
                               ],
                             ),
                           ),
@@ -443,7 +444,8 @@ class _HomeViewState extends State<HomeView> {
                               Navigator.push(
                                   context,
                                   MaterialPageRoute(
-                                      builder: (context) => SpellsList(userDocument["Level"])));
+                                      builder: (context) =>
+                                          SpellsList(userDocument["Level"])));
                             },
                             child: Stack(
                               children: [
@@ -494,12 +496,13 @@ class _HomeViewState extends State<HomeView> {
                           ),
                           GestureDetector(
                             onTap: () {
-                              print('Pass');},
+                              print('Pass');
+                            },
                             child: Stack(
                               children: [
                                 Padding(
                                   padding:
-                                      const EdgeInsets.only(top: 10, right: 10),
+                                      const EdgeInsets.only(top: 0, right: 0),
                                   child: Container(
                                     padding: const EdgeInsets.all(8),
                                     child: Center(
@@ -539,29 +542,13 @@ class _HomeViewState extends State<HomeView> {
                                             BorderRadius.circular(20)),
                                   ),
                                 ),
-                                Align(
-                                  alignment: Alignment.topRight,
-                                  child: Container(
-                                    height: 40,
-                                    width: 40,
-                                    child: Center(
-                                        child: Text(
-                                      "1",
-                                      style: TextStyle(
-                                          fontSize: 20,
-                                          fontWeight: FontWeight.w700),
-                                    )),
-                                    decoration: BoxDecoration(
-                                        shape: BoxShape.circle,
-                                        color: Colors.red),
-                                  ),
-                                ),
                               ],
                             ),
                           ),
                           GestureDetector(
                             onTap: () {
-                              print('Pass');},
+                              print('Pass');
+                            },
                             child: Stack(
                               children: [
                                 Padding(
@@ -613,7 +600,7 @@ class _HomeViewState extends State<HomeView> {
                                     width: 40,
                                     child: Center(
                                         child: Text(
-                                      "5",
+                                      "${userDocument["Event Alerts"]}",
                                       style: TextStyle(
                                           fontSize: 20,
                                           fontWeight: FontWeight.w700),
@@ -628,7 +615,8 @@ class _HomeViewState extends State<HomeView> {
                           ),
                           GestureDetector(
                             onTap: () {
-                              print('Pass');},
+                              print('Pass');
+                            },
                             child: Stack(
                               children: [
                                 Padding(
@@ -680,7 +668,7 @@ class _HomeViewState extends State<HomeView> {
                                     width: 40,
                                     child: Center(
                                         child: Text(
-                                      "4",
+                                      "${userDocument["Social Alerts"]}",
                                       style: TextStyle(
                                           fontSize: 20,
                                           fontWeight: FontWeight.w700),
@@ -695,12 +683,17 @@ class _HomeViewState extends State<HomeView> {
                           ),
                           GestureDetector(
                             onTap: () {
-                              print('Pass');},
+                              Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                      builder: (context) =>
+                                          ProfileView()));
+                            },
                             child: Stack(
                               children: [
                                 Padding(
                                   padding:
-                                      const EdgeInsets.only(top: 10, right: 10),
+                                      const EdgeInsets.only(top: 0, right: 0),
                                   child: Container(
                                     padding: const EdgeInsets.all(8),
                                     child: Center(
@@ -738,23 +731,6 @@ class _HomeViewState extends State<HomeView> {
                                         color: Colors.black,
                                         borderRadius:
                                             BorderRadius.circular(20)),
-                                  ),
-                                ),
-                                Align(
-                                  alignment: Alignment.topRight,
-                                  child: Container(
-                                    height: 40,
-                                    width: 40,
-                                    child: Center(
-                                        child: Text(
-                                      "2",
-                                      style: TextStyle(
-                                          fontSize: 20,
-                                          fontWeight: FontWeight.w700),
-                                    )),
-                                    decoration: BoxDecoration(
-                                        shape: BoxShape.circle,
-                                        color: Colors.red),
                                   ),
                                 ),
                               ],
@@ -802,7 +778,7 @@ class _HomeViewState extends State<HomeView> {
                                         Expanded(
                                           child: LinearPercentIndicator(
                                             lineHeight: 15.0,
-                                            percent: userDocument["XP"]/100,
+                                            percent: userDocument["XP"] / 100,
                                             progressColor: Colors.orange,
                                             backgroundColor: Colors.grey[900],
                                             fillColor: Colors.grey[900],
@@ -812,54 +788,61 @@ class _HomeViewState extends State<HomeView> {
                                     ),
                                   )),
                             ),
-                            SizedBox(height: 10,),
+                            SizedBox(
+                              height: 10,
+                            ),
                             Padding(
-                              padding: const EdgeInsets.symmetric(horizontal: 10),
+                              padding:
+                                  const EdgeInsets.symmetric(horizontal: 10),
                               child: Row(
-                                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                mainAxisAlignment:
+                                    MainAxisAlignment.spaceBetween,
                                 children: [
                                   Container(
-                                        height: 50,
-                                        width: 170,
-                                        decoration: BoxDecoration(
-                                            color: Colors.black,
-                                            borderRadius: BorderRadius.circular(10)),
-                                        child: Padding(
-                                          padding: const EdgeInsets.symmetric(
-                                              horizontal: 10),
-                                          child: Row(
-                                            mainAxisAlignment: MainAxisAlignment.center,
-                                            children: [
-                                              Text("Spells Complete:"),
-                                              SizedBox(
-                                                width: 5,
-                                              ),
-                                              Text("8"),
-                                            ],
+                                    height: 50,
+                                    width: 170,
+                                    decoration: BoxDecoration(
+                                        color: Colors.black,
+                                        borderRadius:
+                                            BorderRadius.circular(10)),
+                                    child: Padding(
+                                      padding: const EdgeInsets.symmetric(
+                                          horizontal: 10),
+                                      child: Row(
+                                        mainAxisAlignment:
+                                            MainAxisAlignment.center,
+                                        children: [
+                                          Text("Spells Complete:"),
+                                          SizedBox(
+                                            width: 5,
                                           ),
+                                          Text("${userDocument["Spells Complete"]}"),
+                                        ],
+                                      ),
+                                    ),
+                                  ),
+                                  Container(
+                                      height: 50,
+                                      width: 170,
+                                      decoration: BoxDecoration(
+                                          color: Colors.black,
+                                          borderRadius:
+                                              BorderRadius.circular(10)),
+                                      child: Padding(
+                                        padding: const EdgeInsets.symmetric(
+                                            horizontal: 10),
+                                        child: Row(
+                                          mainAxisAlignment:
+                                              MainAxisAlignment.center,
+                                          children: [
+                                            Text('Character Level:'),
+                                            SizedBox(
+                                              width: 5,
+                                            ),
+                                            Text("${userDocument["Level"]}"),
+                                          ],
                                         ),
-                                  ),
-                                   Container(
-                                        height: 50,
-                                        width: 170,
-                                        decoration: BoxDecoration(
-                                            color: Colors.black,
-                                            borderRadius: BorderRadius.circular(10)),
-                                        child: Padding(
-                                          padding: const EdgeInsets.symmetric(
-                                              horizontal: 10),
-                                          child: Row(
-                                            mainAxisAlignment: MainAxisAlignment.center,
-                                            children: [
-                                              Text('Character Level:'),
-                                              SizedBox(
-                                                width: 5,
-                                              ),
-                                              Text("2"),
-                                            ],
-                                          ),
-                                        )
-                                  ),
+                                      )),
                                 ],
                               ),
                             ),

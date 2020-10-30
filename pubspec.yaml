@@ -36,6 +36,8 @@ dependencies:
   firebase_ml_vision: ^0.9.7
   flip_card: ^0.4.4
   percent_indicator: "^2.1.7+2"
+  nanoid: ^0.1.0
+
 
 dev_dependencies:
   flutter_test:

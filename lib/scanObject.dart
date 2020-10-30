@@ -42,6 +42,30 @@ class _ScanViewState extends State<ScanView> {
         .catchError((error) => print("Failed to update item: $error"));
   }
 
+  Future<void> addXP() {
+    DocumentReference documentReference = FirebaseFirestore.instance
+        .collection('UserData')
+        .doc("${auth.currentUser.uid}");
+
+    return FirebaseFirestore.instance
+        .runTransaction((transaction) async {
+          // Get the document
+          DocumentSnapshot snapshot = await transaction.get(documentReference);
+
+          if (!snapshot.exists) {
+            throw Exception("User does not exist!");
+          }
+
+          int newXPCount = snapshot.data()['XP'] + 20;
+
+          transaction.update(documentReference, {'XP': newXPCount});
+
+          return newXPCount;
+        })
+        .then((value) => print("XP count updated to $value"))
+        .catchError((error) => print("Failed to update user XPs: $error"));
+  }
+
   File pickedImage;
   var text = '';
 
@@ -103,12 +127,23 @@ class _ScanViewState extends State<ScanView> {
             onPressed: () async {
               if (await pickImage(widget.label) == true) {
                 success();
+                await addXP();
                 Navigator.push(
                     context,
                     MaterialPageRoute(
                         builder: (context) => SpellData(widget.spellname)));
               } else {
                 Navigator.pop(context);
+                final snackBar = SnackBar(
+            content: Text('Yay! A SnackBar!'),
+            action: SnackBarAction(
+              label: 'Undo',
+              onPressed: () {
+                // Some code to undo the change.
+              },
+            ),
+          );
+          Scaffold.of(context).showSnackBar(snackBar);
               }
             },
           ),

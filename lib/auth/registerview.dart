@@ -3,6 +3,7 @@ import 'dart:ui';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:nanoid/async/nanoid.dart';
 import 'package:uuid/uuid.dart';
 
 import '../HomeView.dart';
@@ -31,59 +32,43 @@ class _SignUpViewState extends State<SignUpView> {
           'Name': "Simple Harming Spell",
           'Created': false,
           'LevelNeeded': 0,
-          '1':
-          [
+          '1': [
             {
-              'Name':'Silky cloth from Spooky Spiders',
-              'Label':'Insect',
-              'Own':false
+              'Name': 'Silky cloth from Spooky Spiders',
+              'Label': 'Insect',
+              'Own': false
             }
-            
           ],
-          '2':
-          [
+          '2': [
             {
-              'Name':'Pointy Pine Cones from the Haunted Forest',
-              'Label':'Branch',
-              'Own':false
+              'Name': 'Pointy Pine Cones from the Haunted Forest',
+              'Label': 'Branch',
+              'Own': false
             }
-            
           ],
-          '3':
-          [
-            {
-              'Name':'Fur of Cheshire cat',
-              'Label':'Cat',
-              'Own':false
-            }
-            
+          '3': [
+            {'Name': 'Fur of Cheshire cat', 'Label': 'Cat', 'Own': false}
           ],
-          '4':
-          [
+          '4': [
             {
-              'Name':'The Fang of the Basilisk Serpentine',
-              'Label':'Toy',
-              'Own':false
+              'Name': 'The Fang of the Basilisk Serpentine',
+              'Label': 'Toy',
+              'Own': false
             }
-            
           ],
-          '5':
-          [
+          '5': [
             {
-              'Name':'The Eyeballs of Dracula.',
-              'Label':'Eyelash',
-              'Own':false
+              'Name': 'The Eyeballs of Dracula.',
+              'Label': 'Eyelash',
+              'Own': false
             }
-            
           ],
-          '6':
-          [
+          '6': [
             {
-              'Name':'Branch of the old, wise oak',
-              'Label':'Branch',
-              'Own':false
+              'Name': 'Branch of the old, wise oak',
+              'Label': 'Branch',
+              'Own': false
             }
-            
           ],
         })
         .then((value) => print("Created Spell"))
@@ -102,59 +87,43 @@ class _SignUpViewState extends State<SignUpView> {
           'Name': "Blinding Spell",
           'Created': false,
           'LevelNeeded': 2,
-          '1':
-          [
+          '1': [
             {
-              'Name':'Candy Corn from a Witches Cave',
-              'Label':'Food',
-              'Own':false
+              'Name': 'Candy Corn from a Witches Cave',
+              'Label': 'Food',
+              'Own': false
             }
-            
           ],
-          '2':
-          [
+          '2': [
             {
-              'Name':'Pointy Pine Cones from the Haunted Forest',
-              'Label':'Branch',
-              'Own':false
+              'Name': 'Pointy Pine Cones from the Haunted Forest',
+              'Label': 'Branch',
+              'Own': false
             }
-            
           ],
-          '3':
-          [
+          '3': [
             {
-              'Name':'The Fang of the Basilisk Serpentine',
-              'Label':'Toy',
-              'Own':false
+              'Name': 'The Fang of the Basilisk Serpentine',
+              'Label': 'Toy',
+              'Own': false
             }
-            
           ],
-          '4':
-          [
+          '4': [
             {
-              'Name':'Silk from a Draculas Robe',
-              'Label':'Jacket',
-              'Own':false
+              'Name': 'Silk from a Draculas Robe',
+              'Label': 'Jacket',
+              'Own': false
             }
-            
           ],
-          '5':
-          [
-            {
-              'Name':'Fur of Angry Wolf',
-              'Label':'Dog',
-              'Own':false
-            }
-            
+          '5': [
+            {'Name': 'Fur of Angry Wolf', 'Label': 'Dog', 'Own': false}
           ],
-          '6':
-          [
+          '6': [
             {
-              'Name':'Toenails from a Grumpy Giant',
-              'Label':'Flesh',
-              'Own':false
+              'Name': 'Toenails from a Grumpy Giant',
+              'Label': 'Flesh',
+              'Own': false
             }
-            
           ],
         })
         .then((value) => print("Created Spell"))
@@ -173,59 +142,39 @@ class _SignUpViewState extends State<SignUpView> {
           'Name': "Invisibility Spell",
           'Created': false,
           'LevelNeeded': 7,
-          '1':
-          [
+          '1': [
             {
-              'Name':'Candy Corn from a Witches Cave',
-              'Label':'Food',
-              'Own':false
+              'Name': 'Candy Corn from a Witches Cave',
+              'Label': 'Food',
+              'Own': false
             }
-            
           ],
-          '2':
-          [
+          '2': [
             {
-              'Name':'Pointy Pine Cones from the Haunted Forest',
-              'Label':'Tree',
-              'Own':false
+              'Name': 'Pointy Pine Cones from the Haunted Forest',
+              'Label': 'Tree',
+              'Own': false
             }
-            
           ],
-          '3':
-          [
+          '3': [
             {
-              'Name':'The Fang of the Basilisk Serpentine',
-              'Label':'Food',
-              'Own':false
+              'Name': 'The Fang of the Basilisk Serpentine',
+              'Label': 'Food',
+              'Own': false
             }
-            
           ],
-          '4':
-          [
-            {
-              'Name':'Silk from a Draculas Robe',
-              'Label':'Food',
-              'Own':false
-            }
-            
+          '4': [
+            {'Name': 'Silk from a Draculas Robe', 'Label': 'Food', 'Own': false}
           ],
-          '5':
-          [
-            {
-              'Name':'Fur of Angry Wolf',
-              'Label':'Food',
-              'Own':false
-            }
-            
+          '5': [
+            {'Name': 'Fur of Angry Wolf', 'Label': 'Food', 'Own': false}
           ],
-          '6':
-          [
+          '6': [
             {
-              'Name':'Toenails from a Grumpy Giant',
-              'Label':'Food',
-              'Own':false
+              'Name': 'Toenails from a Grumpy Giant',
+              'Label': 'Food',
+              'Own': false
             }
-            
           ],
         })
         .then((value) => print("Created Spell"))
@@ -244,59 +193,39 @@ class _SignUpViewState extends State<SignUpView> {
           'Name': "Summoning Spell",
           'Created': false,
           'LevelNeeded': 10,
-          '1':
-          [
+          '1': [
             {
-              'Name':'Candy Corn from a Witches Cave',
-              'Label':'Food',
-              'Own':false
+              'Name': 'Candy Corn from a Witches Cave',
+              'Label': 'Food',
+              'Own': false
             }
-            
           ],
-          '2':
-          [
+          '2': [
             {
-              'Name':'Pointy Pine Cones from the Haunted Forest',
-              'Label':'Tree',
-              'Own':false
+              'Name': 'Pointy Pine Cones from the Haunted Forest',
+              'Label': 'Tree',
+              'Own': false
             }
-            
           ],
-          '3':
-          [
+          '3': [
             {
-              'Name':'The Fang of the Basilisk Serpentine',
-              'Label':'Food',
-              'Own':false
+              'Name': 'The Fang of the Basilisk Serpentine',
+              'Label': 'Food',
+              'Own': false
             }
-            
           ],
-          '4':
-          [
-            {
-              'Name':'Silk from a Draculas Robe',
-              'Label':'Food',
-              'Own':false
-            }
-            
+          '4': [
+            {'Name': 'Silk from a Draculas Robe', 'Label': 'Food', 'Own': false}
           ],
-          '5':
-          [
-            {
-              'Name':'Fur of Angry Wolf',
-              'Label':'Food',
-              'Own':false
-            }
-            
+          '5': [
+            {'Name': 'Fur of Angry Wolf', 'Label': 'Food', 'Own': false}
           ],
-          '6':
-          [
+          '6': [
             {
-              'Name':'Toenails from a Grumpy Giant',
-              'Label':'Food',
-              'Own':false
+              'Name': 'Toenails from a Grumpy Giant',
+              'Label': 'Food',
+              'Own': false
             }
-            
           ],
         })
         .then((value) => print("Created Spell"))
@@ -315,59 +244,39 @@ class _SignUpViewState extends State<SignUpView> {
           'Name': "Grand Witche's Curse",
           'Created': false,
           'LevelNeeded': 15,
-          '1':
-          [
+          '1': [
             {
-              'Name':'Candy Corn from a Witches Cave',
-              'Label':'Food',
-              'Own':false
+              'Name': 'Candy Corn from a Witches Cave',
+              'Label': 'Food',
+              'Own': false
             }
-            
           ],
-          '2':
-          [
+          '2': [
             {
-              'Name':'Pointy Pine Cones from the Haunted Forest',
-              'Label':'Tree',
-              'Own':false
+              'Name': 'Pointy Pine Cones from the Haunted Forest',
+              'Label': 'Tree',
+              'Own': false
             }
-            
           ],
-          '3':
-          [
+          '3': [
             {
-              'Name':'The Fang of the Basilisk Serpentine',
-              'Label':'Food',
-              'Own':false
+              'Name': 'The Fang of the Basilisk Serpentine',
+              'Label': 'Food',
+              'Own': false
             }
-            
           ],
-          '4':
-          [
-            {
-              'Name':'Silk from a Draculas Robe',
-              'Label':'Food',
-              'Own':false
-            }
-            
+          '4': [
+            {'Name': 'Silk from a Draculas Robe', 'Label': 'Food', 'Own': false}
           ],
-          '5':
-          [
-            {
-              'Name':'Fur of Angry Wolf',
-              'Label':'Food',
-              'Own':false
-            }
-            
+          '5': [
+            {'Name': 'Fur of Angry Wolf', 'Label': 'Food', 'Own': false}
           ],
-          '6':
-          [
+          '6': [
             {
-              'Name':'Toenails from a Grumpy Giant',
-              'Label':'Food',
-              'Own':false
+              'Name': 'Toenails from a Grumpy Giant',
+              'Label': 'Food',
+              'Own': false
             }
-            
           ],
         })
         .then((value) => print("Created Spell"))
@@ -390,7 +299,8 @@ class _SignUpViewState extends State<SignUpView> {
         .catchError((error) => print("Failed to add spell: $error"));
   }
   */
-  Future<void> userData() {
+  Future<void> userData() async {
+    var custom_length_id = await nanoid(7);
     CollectionReference users =
         FirebaseFirestore.instance.collection('UserData');
     // Call the user's CollectionReference to add a new user
@@ -401,10 +311,16 @@ class _SignUpViewState extends State<SignUpView> {
           'Level': 0,
           'Cash': 0,
           'Character': "None",
+          'Social Alerts': 0,
+          'Spells Complete': 0,
+          'Event Alerts': 0,
+          'UserUID': '${custom_length_id}',
         })
         .then((value) => print("Created Spell"))
         .catchError((error) => print("Failed to add spell: $error"));
   }
+
+  
 
   String _feedback = '';
   bool checkValue = false;
