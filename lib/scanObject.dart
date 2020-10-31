@@ -65,7 +65,7 @@ class _ScanViewState extends State<ScanView> {
           }
 
           
-          int newXPCount = snapshot.data()['XP'] + 50;
+          int newXPCount = snapshot.data()['XP'] + 20;
 
           if (snapshot.data()['XP'] > 99){
             

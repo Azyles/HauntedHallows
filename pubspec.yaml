@@ -39,7 +39,8 @@ dependencies:
   nanoid: ^0.1.0
   camera: ^0.5.8+11
   liquid_progress_indicator: ^0.3.2
-
+  animations: ^1.1.2
+    
 dev_dependencies:
   flutter_test:
     sdk: flutter
