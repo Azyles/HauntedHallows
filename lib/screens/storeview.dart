@@ -111,157 +111,161 @@ class _StoreViewState extends State<StoreView> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      key: scaffoldKey,
-      appBar: AppBar(
-        leading: IconButton(
-            icon: Icon(Icons.arrow_back_ios),
-            onPressed: () {
-              Navigator.push(
-                  context, MaterialPageRoute(builder: (context) => HomeView()));
-            }),
-        elevation: 0,
-        centerTitle: true,
-        title: Text("Store"),
+    return Material(
+      type: MaterialType.transparency,
+      child: Scaffold(
+        key: scaffoldKey,
+        appBar: AppBar(
+          leading: IconButton(
+              icon: Icon(Icons.arrow_back_ios),
+              onPressed: () {
+                Navigator.push(
+                    context, MaterialPageRoute(builder: (context) => HomeView()));
+              }),
+          elevation: 0,
+          centerTitle: true,
+          title: Text("Store"),
+          backgroundColor: Colors.purple[800],
+        ),
         backgroundColor: Colors.purple[800],
-      ),
-      backgroundColor: Colors.purple[800],
-      body: Container(
-        decoration: BoxDecoration(
-            image: DecorationImage(
-                image: NetworkImage("https://i.imgur.com/R3QSwPz.png"),
-                fit: BoxFit.cover)),
-        child: FutureBuilder<DocumentSnapshot>(
-          future: users.doc("${auth.currentUser.uid}").get(),
-          builder:
-              (BuildContext context, AsyncSnapshot<DocumentSnapshot> snapshot) {
-            if (snapshot.hasError) {
-              return Text("Something went wrong");
-            }
-            //data['Cash']
-            if (snapshot.connectionState == ConnectionState.done) {
-              Map<String, dynamic> data = snapshot.data.data();
-              return Column(
-                children: [
-                  SizedBox(
-                    height: 20,
-                  ),
-                  Center(
-                    child: Padding(
-                      padding: const EdgeInsets.symmetric(horizontal: 20),
-                      child: Container(
-                        child: DragTarget(
-                          builder: (context, List<String> candidateData,
-                              rejectedData) {
-                            print(candidateData);
-                            return Center(
-                                child: Padding(
-                                  padding: const EdgeInsets.only(top: 100),
-                                  child: Text(
-                              "",
-                              style: TextStyle(
-                                    color: Colors.black, fontSize: 26.0,fontWeight: FontWeight.w700,backgroundColor: Colors.white),
-                            ),
-                                ));
-                          },
-                          onWillAccept: (data) {
-                            return true;
-                          },
-                          onAccept: (data) {
-                            print(data);
-                            resetspell(data);
-                            addCash();
-                            print("Item Sold.");
-                          },
+        body: Container(
+          decoration: BoxDecoration(
+              image: DecorationImage(
+                  image: NetworkImage("https://i.imgur.com/R3QSwPz.png"),
+                  fit: BoxFit.cover)),
+          child: FutureBuilder<DocumentSnapshot>(
+            future: users.doc("${auth.currentUser.uid}").get(),
+            builder:
+                (BuildContext context, AsyncSnapshot<DocumentSnapshot> snapshot) {
+              if (snapshot.hasError) {
+                return Text("Something went wrong");
+              }
+              //data['Cash']
+              if (snapshot.connectionState == ConnectionState.done) {
+                Map<String, dynamic> data = snapshot.data.data();
+                return Column(
+                  children: [
+                    SizedBox(
+                      height: 20,
+                    ),
+                    Center(
+                      child: Padding(
+                        padding: const EdgeInsets.symmetric(horizontal: 20),
+                        child: Container(
+                          child: DragTarget(
+                            builder: (context, List<String> candidateData,
+                                rejectedData) {
+                              print(candidateData);
+                              return Center(
+                                  child: Padding(
+                                    padding: const EdgeInsets.only(top: 100),
+                                    child: Text(
+                                "",
+                                style: TextStyle(
+                                      color: Colors.black, fontSize: 26.0,fontWeight: FontWeight.w700,backgroundColor: Colors.white),
+                              ),
+                                  ));
+                            },
+                            onWillAccept: (data) {
+                              return true;
+                            },
+                            onAccept: (data) {
+                              print(data);
+                              resetspell(data);
+                              addCash();
+                              print("Item Sold.");
+                            },
+                          ),
+                          decoration: BoxDecoration(
+                            image: DecorationImage(image: AssetImage('assets/chest.png'),fit: BoxFit.fitWidth,colorFilter: ColorFilter.mode(Colors.purple[800], BlendMode.color)),
+                              color: Colors.white,
+                              borderRadius: BorderRadius.circular(20)),
+                          height: 170,
                         ),
-                        decoration: BoxDecoration(
-                          image: DecorationImage(image: AssetImage('assets/chest.png'),fit: BoxFit.fitWidth,colorFilter: ColorFilter.mode(Colors.purple[800], BlendMode.color)),
-                            color: Colors.white,
-                            borderRadius: BorderRadius.circular(20)),
-                        height: 170,
                       ),
                     ),
-                  ),
-                  SizedBox(
-                    height: 20,
-                  ),
-                  Expanded(
-                      child: StreamBuilder<QuerySnapshot>(
-                    stream: FirebaseFirestore.instance
-                        .collection('UserData')
-                        .doc("${auth.currentUser.uid}")
-                        .collection('Spells')
-                        .where("Created", isEqualTo: true)
-                        .snapshots(),
-                    builder: (BuildContext context,
-                        AsyncSnapshot<QuerySnapshot> snapshot) {
-                      if (snapshot.hasError) {
-                        return Text('Something went wrong');
-                      }
+                    SizedBox(
+                      height: 20,
+                    ),
+                    Expanded(
+                        child: StreamBuilder<QuerySnapshot>(
+                      stream: FirebaseFirestore.instance
+                          .collection('UserData')
+                          .doc("${auth.currentUser.uid}")
+                          .collection('Spells')
+                          .where("Created", isEqualTo: true)
+                          .snapshots(),
+                      builder: (BuildContext context,
+                          AsyncSnapshot<QuerySnapshot> snapshot) {
+                        if (snapshot.hasError) {
+                          return Text('Something went wrong');
+                        }
 
-                      if (snapshot.connectionState == ConnectionState.waiting) {
-                        return Text("Loading");
-                      }
+                        if (snapshot.connectionState == ConnectionState.waiting) {
+                          return Text("Loading");
+                        }
 
-                      return Padding(
-                        padding: const EdgeInsets.symmetric(horizontal: 20),
-                        child: new GridView(
-                          gridDelegate:
-                              SliverGridDelegateWithFixedCrossAxisCount(
-                                  crossAxisCount: 2,
-                                  crossAxisSpacing: 20,
-                                  mainAxisSpacing: 20),
-                          children: snapshot.data.docs
-                              .map((DocumentSnapshot document) {
-                            return Draggable(
-                              data: "${document.data()['Name']}",
-                              feedback: Container(
-                                height: 175,
-                                width: 175,
-                                decoration: BoxDecoration(
-                                    color: Colors.black,
-                                    borderRadius: BorderRadius.circular(20)),
-                                child: Padding(
-                                  padding: const EdgeInsets.all(10.0),
-                                  child: Center(
-                                      child: new Text(
-                                    document.data()['Name'],
-                                    style: TextStyle(
-                                        fontSize: 15,
-                                        fontWeight: FontWeight.w700,
-                                        color: Colors.white),
-                                    textAlign: TextAlign.center,
-                                  )),
+                        return Padding(
+                          padding: const EdgeInsets.symmetric(horizontal: 20),
+                          child: new GridView(
+                            gridDelegate:
+                                SliverGridDelegateWithFixedCrossAxisCount(
+                                    crossAxisCount: 2,
+                                    crossAxisSpacing: 20,
+                                    mainAxisSpacing: 20),
+                            children: snapshot.data.docs
+                                .map((DocumentSnapshot document) {
+                              return Draggable(
+                                data: "${document.data()['Name']}",
+                                feedback: Container(
+                                  height: 175,
+                                  width: 175,
+                                  decoration: BoxDecoration(
+                                      color: Colors.purple[100],
+                                      borderRadius: BorderRadius.circular(20)),
+                                  child: Padding(
+                                    padding: const EdgeInsets.all(10.0),
+                                    child: Center(
+                                        child: new Text(
+                                      document.data()['Name'],
+                                      style: TextStyle(
+                                        decoration: TextDecoration.none,
+                                          fontSize: 15,
+                                          fontWeight: FontWeight.w700,
+                                          color: Colors.white),
+                                      textAlign: TextAlign.center,
+                                    )),
+                                  ),
                                 ),
-                              ),
-                              child: new Container(
-                                decoration: BoxDecoration(
-                                    color: Colors.black,
-                                    borderRadius: BorderRadius.circular(20)),
-                                child: Padding(
-                                  padding: const EdgeInsets.all(10.0),
-                                  child: Center(
-                                      child: new Text(
-                                    document.data()['Name'],
-                                    style: TextStyle(
-                                        fontSize: 15,
-                                        fontWeight: FontWeight.w700,
-                                        color: Colors.white),
-                                    textAlign: TextAlign.center,
-                                  )),
+                                child: new Container(
+                                  decoration: BoxDecoration(
+                                      color: Colors.purple[100],
+                                      borderRadius: BorderRadius.circular(20)),
+                                  child: Padding(
+                                    padding: const EdgeInsets.all(10.0),
+                                    child: Center(
+                                        child: new Text(
+                                      document.data()['Name'],
+                                      style: TextStyle(
+                                          fontSize: 15,
+                                          fontWeight: FontWeight.w700,
+                                          color: Colors.white),
+                                      textAlign: TextAlign.center,
+                                    )),
+                                  ),
                                 ),
-                              ),
-                            );
-                          }).toList(),
-                        ),
-                      );
-                    },
-                  ))
-                ],
-              );
-            }
-            return Text("loading");
-          },
+                              );
+                            }).toList(),
+                          ),
+                        );
+                      },
+                    ))
+                  ],
+                );
+              }
+              return Text("loading");
+            },
+          ),
         ),
       ),
     );
