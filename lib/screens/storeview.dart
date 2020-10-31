@@ -175,7 +175,7 @@ class _StoreViewState extends State<StoreView> {
                           },
                         ),
                         decoration: BoxDecoration(
-                          image: DecorationImage(image: NetworkImage("https://cdn.dribbble.com/users/205777/screenshots/7735680/media/2085b6952c8d6899f0544719e20bdb08.png"),fit: BoxFit.fitWidth),
+                          image: DecorationImage(image: AssetImage('assets/chest.png'),fit: BoxFit.fitWidth,colorFilter: ColorFilter.mode(Colors.purple[800], BlendMode.color)),
                             color: Colors.white,
                             borderRadius: BorderRadius.circular(20)),
                         height: 170,

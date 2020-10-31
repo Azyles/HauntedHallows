@@ -98,15 +98,7 @@ class _SpellsListState extends State<SpellsList> {
                                             fontWeight: FontWeight.w700,
                                             fontSize: 20),
                                       ),
-                                      Text(
-                                        document
-                                            .data()['LevelNeeded']
-                                            .toString(),
-                                        style: TextStyle(
-                                            color: Colors.purple[900],
-                                            fontWeight: FontWeight.w700,
-                                            fontSize: 20),
-                                      ),
+                                      Icon(Icons.lock_outline,color: Colors.purple[300],)
                                     ],
                                   ),
                                 ),
@@ -143,15 +135,6 @@ class _SpellsListState extends State<SpellsList> {
                                       children: [
                                         Text(
                                           document.data()['Name'],
-                                          style: TextStyle(
-                                              color: Colors.white,
-                                              fontWeight: FontWeight.w700,
-                                              fontSize: 20),
-                                        ),
-                                        Text(
-                                          document
-                                              .data()['LevelNeeded']
-                                              .toString(),
                                           style: TextStyle(
                                               color: Colors.white,
                                               fontWeight: FontWeight.w700,
