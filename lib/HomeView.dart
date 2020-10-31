@@ -1,6 +1,7 @@
 import 'dart:ui';
 import 'package:HauntedHallows/scanObject.dart';
 import 'package:HauntedHallows/screens/profileview.dart';
+import 'package:HauntedHallows/screens/quests.dart';
 import 'package:HauntedHallows/screens/social.dart';
 import 'package:HauntedHallows/screens/spellslist.dart';
 import 'package:HauntedHallows/screens/storeview.dart';
@@ -504,7 +505,11 @@ class _HomeViewState extends State<HomeView> {
                           ),
                           GestureDetector(
                             onTap: () {
-                              print('Pass');
+                              Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                      builder: (context) =>
+                                          QuestView()));
                             },
                             child: Stack(
                               children: [
