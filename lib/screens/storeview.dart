@@ -23,7 +23,7 @@ class _StoreViewState extends State<StoreView> {
     return users
         .doc(spellname)
         .set({
-          'Name': "Simple Harming Spell",
+          'Name': "${spellname}",
           'Created': false,
           'Quality': 0,
           'LevelNeeded': 0,
@@ -155,11 +155,14 @@ class _StoreViewState extends State<StoreView> {
                               rejectedData) {
                             print(candidateData);
                             return Center(
-                                child: Text(
-                              "Store",
+                                child: Padding(
+                                  padding: const EdgeInsets.only(top: 100),
+                                  child: Text(
+                              "",
                               style: TextStyle(
-                                  color: Colors.black, fontSize: 22.0),
-                            ));
+                                    color: Colors.black, fontSize: 26.0,fontWeight: FontWeight.w700,backgroundColor: Colors.white),
+                            ),
+                                ));
                           },
                           onWillAccept: (data) {
                             return true;
@@ -172,9 +175,10 @@ class _StoreViewState extends State<StoreView> {
                           },
                         ),
                         decoration: BoxDecoration(
+                          image: DecorationImage(image: NetworkImage("https://cdn.dribbble.com/users/205777/screenshots/7735680/media/2085b6952c8d6899f0544719e20bdb08.png"),fit: BoxFit.fitWidth),
                             color: Colors.white,
                             borderRadius: BorderRadius.circular(20)),
-                        height: 150,
+                        height: 170,
                       ),
                     ),
                   ),

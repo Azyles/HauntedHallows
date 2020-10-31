@@ -1,6 +1,7 @@
 import 'dart:ui';
 import 'package:HauntedHallows/scanObject.dart';
 import 'package:HauntedHallows/screens/profileview.dart';
+import 'package:HauntedHallows/screens/social.dart';
 import 'package:HauntedHallows/screens/spellslist.dart';
 import 'package:HauntedHallows/screens/storeview.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
@@ -340,7 +341,7 @@ class _HomeViewState extends State<HomeView> {
                               width: 20,
                             ),
                             Text(
-                              userDocument["Character"],
+                              userDocument["UserName"],
                               textAlign: TextAlign.center,
                               style: TextStyle(
                                 color: Colors.white,
@@ -622,7 +623,11 @@ class _HomeViewState extends State<HomeView> {
                           ),
                           GestureDetector(
                             onTap: () {
-                              print('Pass');
+                              Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                      builder: (context) =>
+                                          SocialView()));
                             },
                             child: Stack(
                               children: [

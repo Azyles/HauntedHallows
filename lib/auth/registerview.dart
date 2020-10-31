@@ -367,8 +367,8 @@ class _SignUpViewState extends State<SignUpView> {
         .catchError((error) => print("Failed to add spell: $error"));
   }
   */
-  Future<void> userData() async {
-    var custom_length_id = await nanoid(7);
+  Future<void> userData(String name) async {
+    var customLengthId = await nanoid(7);
     CollectionReference users =
         FirebaseFirestore.instance.collection('UserData');
     // Call the user's CollectionReference to add a new user
@@ -378,11 +378,12 @@ class _SignUpViewState extends State<SignUpView> {
           'XP': 0,
           'Level': 0,
           'Cash': 0,
+          'UserName': name,
           'Character': "None",
           'Social Alerts': 0,
           'Spells Complete': 0,
           'Event Alerts': 0,
-          'UserUID': '${custom_length_id}',
+          'UserUID': '${customLengthId}',
         })
         .then((value) => print("Created Spell"))
         .catchError((error) => print("Failed to add spell: $error"));
@@ -390,6 +391,9 @@ class _SignUpViewState extends State<SignUpView> {
 
   String _feedback = '';
   bool checkValue = false;
+
+  
+  final TextEditingController _usernameController = TextEditingController();
 
   final TextEditingController _emailController = TextEditingController();
 
@@ -438,6 +442,39 @@ class _SignUpViewState extends State<SignUpView> {
             key: _formKey,
             child: Column(
               children: [
+                Center(
+                  child: Container(
+                    decoration: BoxDecoration(
+                        border: Border.all(color: Colors.deepOrange, width: 2),
+                        color: Color.fromRGBO(24, 24, 24, 0),
+                        borderRadius: BorderRadius.circular(10)),
+                    child: Center(
+                      child: Padding(
+                        padding: EdgeInsets.symmetric(horizontal: 20),
+                        child: TextFormField(
+                          style: TextStyle(color: Colors.white),
+                          controller: _usernameController,
+                          keyboardType: TextInputType.name,
+                          decoration: InputDecoration(
+                              hintStyle: TextStyle(color: Colors.white),
+                              border: InputBorder.none,
+                              hintText: 'UserName'),
+                          validator: (value) {
+                            if (value == null || value == '') {
+                              return 'UserName cannot be blank';
+                            }
+                            return null;
+                          },
+                        ),
+                      ),
+                    ),
+                    height: MediaQuery.of(context).size.height * 0.06,
+                    width: MediaQuery.of(context).size.width * 0.85,
+                  ),
+                ),
+                SizedBox(
+                  height: MediaQuery.of(context).size.height * 0.02,
+                ),
                 Center(
                   child: Container(
                     decoration: BoxDecoration(
@@ -520,7 +557,7 @@ class _SignUpViewState extends State<SignUpView> {
                         _emailController.text,
                         _passwordController.text,
                       );
-                      userData();
+                      userData(_usernameController.text);
                       createSpell1();
                       createSpell2();
                       createSpell3();
