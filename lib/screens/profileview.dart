@@ -27,13 +27,13 @@ class _ProfileViewState extends State<ProfileView> {
         elevation: 0,
         centerTitle: true,
         title: Text("Profile"),
-        backgroundColor: Colors.yellow[800],
+        backgroundColor: Colors.purple[800],
       ),
-      backgroundColor: Color.fromRGBO(255, 183, 45, 1),
+      backgroundColor: Colors.purple[800],
       body: Container(
         decoration: BoxDecoration(
               image: DecorationImage(
-                  image: NetworkImage("https://i.imgur.com/d0rz0dn.png"),
+                  image: NetworkImage("https://i.imgur.com/R3QSwPz.png"),
                   fit: BoxFit.cover)),
         child: FutureBuilder<DocumentSnapshot>(
           future: users.doc("${auth.currentUser.uid}").get(),
@@ -51,10 +51,10 @@ class _ProfileViewState extends State<ProfileView> {
                   Center(
                     child: Container(
                       decoration: BoxDecoration(
-                        color: Colors.yellow[800],
-                        shape: BoxShape.circle,
-                        border: Border.all(color: Colors.yellow[700],width: 10)
-                      ),
+                          color: Colors.purple[800],
+                          shape: BoxShape.circle,
+                          border: Border.all(color: Colors.purple[700],width: 10)
+                        ),
                       height: 220,
                       width: 220,
                     ),
@@ -67,7 +67,7 @@ class _ProfileViewState extends State<ProfileView> {
                         child: Row(
                           children: [
                             SizedBox(width: 20,),
-                            Text("Character:",style: TextStyle(color: Colors.orange[200],fontSize: 22,fontWeight: FontWeight.w700),),
+                            Text("Character:",style: TextStyle(color: Colors.white,fontSize: 22,fontWeight: FontWeight.w700),),
                             Spacer(),
                             Text(data["Character"],style: TextStyle(color: Colors.grey[100],fontSize: 22,fontWeight: FontWeight.w700),),
                             SizedBox(width: 20,),
@@ -75,8 +75,8 @@ class _ProfileViewState extends State<ProfileView> {
                           ],
                         ),
                         decoration: BoxDecoration(
-                          color: Colors.orange[400],
-                          border: Border.all(color: Colors.yellow[700],width: 10)
+                          color: Colors.purple[800],
+                          border: Border.all(color: Colors.purple[700],width: 10)
                         ),
                         height: 80,
                       ),
@@ -90,7 +90,7 @@ class _ProfileViewState extends State<ProfileView> {
                         child: Row(
                           children: [
                             SizedBox(width: 20,),
-                            Text("User ID:",style: TextStyle(color: Colors.orange[200],fontSize: 22,fontWeight: FontWeight.w700),),
+                            Text("User ID:",style: TextStyle(color: Colors.white,fontSize: 22,fontWeight: FontWeight.w700),),
                             Spacer(),
                             Text(data["UserUID"],style: TextStyle(color: Colors.grey[100],fontSize: 22,fontWeight: FontWeight.w700),),
                             SizedBox(width: 20,),
@@ -98,8 +98,8 @@ class _ProfileViewState extends State<ProfileView> {
                           ],
                         ),
                         decoration: BoxDecoration(
-                          color: Colors.orange[400],
-                          border: Border.all(color: Colors.yellow[700],width: 10)
+                          color: Colors.purple[800],
+                          border: Border.all(color: Colors.purple[700],width: 10)
                         ),
                         height: 80,
                       ),

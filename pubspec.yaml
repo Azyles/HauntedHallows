@@ -37,7 +37,8 @@ dependencies:
   flip_card: ^0.4.4
   percent_indicator: "^2.1.7+2"
   nanoid: ^0.1.0
-
+  camera: ^0.5.8+11
+  liquid_progress_indicator: ^0.3.2
 
 dev_dependencies:
   flutter_test:

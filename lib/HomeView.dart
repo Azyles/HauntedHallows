@@ -2,6 +2,7 @@ import 'dart:ui';
 import 'package:HauntedHallows/scanObject.dart';
 import 'package:HauntedHallows/screens/profileview.dart';
 import 'package:HauntedHallows/screens/spellslist.dart';
+import 'package:HauntedHallows/screens/storeview.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flip_card/flip_card.dart';
@@ -42,7 +43,9 @@ class _HomeViewState extends State<HomeView> {
               .snapshots(),
           builder: (context, snapshot) {
             if (!snapshot.hasData) {
-              return Container(height: 80, width: 80, child: Text("Loading"));
+              return Center(
+                child: CircularProgressIndicator(),
+              );
             }
             var userDocument = snapshot.data;
             if (userDocument["Character"] == "None") {
@@ -320,7 +323,7 @@ class _HomeViewState extends State<HomeView> {
               return Container(
                 decoration: BoxDecoration(
                     image: DecorationImage(
-                        image: NetworkImage("https://i.imgur.com/d0rz0dn.png"),
+                        image: NetworkImage("https://i.imgur.com/R3QSwPz.png"),
                         fit: BoxFit.cover)),
                 child: Column(
                   children: [
@@ -373,7 +376,7 @@ class _HomeViewState extends State<HomeView> {
                           ],
                         ),
                         decoration: new BoxDecoration(
-                            color: Colors.yellow[800],
+                            color: Colors.purple[800],
                             borderRadius: BorderRadius.circular(10)),
                       ),
                     ),
@@ -390,7 +393,11 @@ class _HomeViewState extends State<HomeView> {
                         children: <Widget>[
                           GestureDetector(
                             onTap: () {
-                              print('Pass');
+                              Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                      builder: (context) =>
+                                          StoreView()));
                             },
                             child: Stack(
                               children: [
@@ -779,9 +786,8 @@ class _HomeViewState extends State<HomeView> {
                                           child: LinearPercentIndicator(
                                             lineHeight: 15.0,
                                             percent: userDocument["XP"] / 100,
-                                            progressColor: Colors.orange,
+                                            progressColor: Colors.purple[300],
                                             backgroundColor: Colors.grey[900],
-                                            fillColor: Colors.grey[900],
                                           ),
                                         ),
                                       ],
@@ -849,7 +855,7 @@ class _HomeViewState extends State<HomeView> {
                           ],
                         ),
                         decoration: new BoxDecoration(
-                            color: Colors.yellow[800],
+                            color: Colors.purple[800],
                             borderRadius: BorderRadius.circular(10)),
                       ),
                     ),
