@@ -1,3 +1,3 @@
 # HauntedHallows
-## Try it out!
 
+You play as one of the three magical characters and your goal is to craft potions which you can exchange for candy at the Marketplace. To craft a potion, you must go around and scavenge for items that match the list of ingredients needed. For example, to seek for the Branch of the old, wise oak, you would need to find a tree branch or a stick. Using Google ML Kit the app will look for the ingredient in your photo. After you collect all the items, you can craft your selected potion. There is also a leveling system where you can complete quests to level up. You can compete to be the highest level among your friends!
